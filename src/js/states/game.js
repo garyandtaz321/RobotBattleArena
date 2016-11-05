@@ -39,6 +39,9 @@ Game.prototype = {
     player.invincible = false;
     this.physics.arcade.enable(player);
 
+    //sound effect
+   var crash = this.add.audio('crash');
+
     this.game.camera.follow(player);
   },
 

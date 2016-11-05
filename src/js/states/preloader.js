@@ -19,6 +19,7 @@ Preloader.prototype = {
     this.load.image('swankymemes', 'assets/tilemap/swankymemes.png');
     this.load.image('swankymemes2', 'assets/tilemap/swankymemes2.png');
     this.load.image('player', 'assets/car.png');
+    this.load.audio('crash', 'assets/crash.wav');
   },
 
   create: function () {
