@@ -27,6 +27,9 @@ Game.prototype = {
     player = this.add.sprite(32, 32, 'player');
     this.physics.arcade.enable(player);
 
+    //sound effect
+   var crash = this.add.audio('crash');
+
     this.game.camera.follow(player);
   },
 
