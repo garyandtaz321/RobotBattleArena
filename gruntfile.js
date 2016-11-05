@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'bower_components/phaser-official/build/',
+						cwd: 'node_modules/phaser/build/',
 						src: ['phaser.min.js'],
 						dest: 'dist/vendor/'
 					}
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			dist: {
 				files: {
-					'dist/css/main.min.css': ['src/css/main.min.css']
+					'dist/css/main.min.css': ['src/css/main.css']
 				}
 			}
 		},
