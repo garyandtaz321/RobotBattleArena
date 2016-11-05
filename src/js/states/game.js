@@ -20,6 +20,7 @@ Game.prototype = {
     
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
+    //    crash.play();
       console.log("Lava! Watch out!");
       return;
     }, this);
@@ -30,9 +31,15 @@ Game.prototype = {
     //sound effect
    var crash = this.add.audio('crash');
 
+   player.body.collideWorldBounds = true;
+   player.body.onWorldBounds = new Phaser.Signal();
+ //  player.body.onWorldBounds.add(hitWorldBounds this);
+
     this.game.camera.follow(player);
   },
-
+ hitWorldBounds: function (audio) {
+      crash.play();
+  },
   update: function () {
     this.physics.arcade.collide(player, this.layer);
 
