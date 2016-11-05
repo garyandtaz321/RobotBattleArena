@@ -28,28 +28,30 @@ Game.prototype = {
     this.physics.arcade.enable(player);
 
     this.game.camera.follow(player);
-
-    this.cursors = this.input.keyboard.createCursorKeys();
-
   },
 
   update: function () {
     this.physics.arcade.collide(player, this.layer);
 
-    if (this.cursors.left.isDown) {
-          player.body.velocity.x = -100;
+    var wKey = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
+    var sKey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+    var aKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
+    var dKey = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
+
+    if (aKey.isDown) {
+          player.body.velocity.x = -200;
       }
-      else if (this.cursors.right.isDown) {
-          player.body.velocity.x = 100;
+      else if (dKey.isDown) {
+          player.body.velocity.x = 200;
       }
       else {
           player.body.velocity.x = 0;
       }
-      if (this.cursors.up.isDown){
-          player.body.velocity.y = -100;
+      if (wKey.isDown){
+          player.body.velocity.y = -200;
       }
-      else if (this.cursors.down.isDown){
-          player.body.velocity.y = 100;
+      else if (sKey.isDown){
+          player.body.velocity.y = 200;
       }
       else {
           player.body.velocity.y = 0;
