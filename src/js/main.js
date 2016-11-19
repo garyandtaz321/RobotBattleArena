@@ -1,6 +1,6 @@
 'use strict';
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'my-game-game');
+var game = new Phaser.Game(screen.width, screen.height, Phaser.AUTO, 'my-game-game');
 
 window.Utils = require('./utils');
 
