@@ -19,9 +19,31 @@ Game.prototype = {
 
     this.layer = this.map.createLayer('Tile Layer 1');
     
+    var bullets = this.add.group();
+    var fireRate = 100;
+    var nextFire = 0;
+    
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    bullets.createMultiple(50, 'player');
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
+<<<<<<< HEAD
       //crash.play();
+=======
+
+        crash.play();
+      console.log("Lava! Watch out!");
+      return;
+
+      console.log(player.health);
+      console.log(player.invincible);
+      player.invincible = true;
+>>>>>>> 3f5e22dd5323e98ef632619a7e5e8e18b500f954
       if (player.invincible == false) {
           player.health -= 20;
           console.log(player.health);
@@ -60,7 +82,10 @@ Game.prototype = {
     var sKey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
     var aKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
     var dKey = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
-
+     if (this.input.activePointer.isDown)
+    {
+        fire();
+    }
     if (aKey.isDown) {
           player.body.velocity.x = -200;
       }
@@ -79,10 +104,26 @@ Game.prototype = {
       else {
           player.body.velocity.y = 0;
       }
+<<<<<<< HEAD
    if (player.health == 0) {
        console.log("u ded fam");
    }
 },
+=======
+  },
+  fire: function () {
+      if (game.time.now > nextFire && bullets.countDead() > 0)
+    {
+        nextFire = game.time.now + fireRate;
+
+        var bullet = bullets.getFirstDead();
+
+        bullet.reset(sprite.x - 8, sprite.y - 8);
+
+        game.physics.arcade.moveToPointer(bullet, 300);
+    }
+  },
+>>>>>>> 3f5e22dd5323e98ef632619a7e5e8e18b500f954
 
   onInputDown: function () {
     this.game.state.start('Menu');
