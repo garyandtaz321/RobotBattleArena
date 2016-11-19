@@ -21,15 +21,15 @@ Game.prototype = {
     
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
-      console.log(player.health);
-      console.log(player.invincible);
-      player.invincible = true;
       if (player.invincible == false) {
           player.health -= 20;
+          console.log(player.health);
+          player.invincible = true;
       }
       if (player.invincible == true) {
           this.time.events.add(2000, () => {
             player.invincible = false;
+            console.log(player.invincible);
           }, this);
       }
     }, this);
@@ -40,7 +40,7 @@ Game.prototype = {
     this.physics.arcade.enable(player);
 
     //sound effect
-   var crash = this.add.audio('crash');
+    var crash = this.add.audio('crash');
 
     this.game.camera.follow(player);
   },
