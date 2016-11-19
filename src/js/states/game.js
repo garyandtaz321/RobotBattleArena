@@ -15,17 +15,34 @@ Game.prototype = {
     this.map.addTilesetImage('CaveStory-MimigaVillage', 'CaveStory-MimigaVillage');
     this.map.addTilesetImage('lava', 'lava');
     this.map.addTilesetImage('swankymemes', 'swankymemes');
+    this.map.addTilesetImage('swankymemes2', 'swankymemes2');
 
     this.layer = this.map.createLayer('Tile Layer 1');
     
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
+<<<<<<< HEAD
     //    crash.play();
       console.log("Lava! Watch out!");
       return;
+=======
+      console.log(player.health);
+      console.log(player.invincible);
+      player.invincible = true;
+      if (player.invincible == false) {
+          player.health -= 20;
+      }
+      if (player.invincible == true) {
+          this.time.events.add(2000, () => {
+            player.invincible = false;
+          }, this);
+      }
+>>>>>>> ef5fdd1f87a0245c2693a087ff8b46cfbdd6f924
     }, this);
 
     player = this.add.sprite(32, 32, 'player');
+    player.health = 100;
+    player.invincible = false;
     this.physics.arcade.enable(player);
 
     //sound effect
