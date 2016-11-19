@@ -21,11 +21,7 @@ Game.prototype = {
     
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
-      crash.play();
-      console.log("Lava! Watch out!");
-      console.log(player.health);
-      console.log(player.invincible);
-      player.invincible = true;
+      //crash.play();
       if (player.invincible == false) {
           player.health -= 20;
           console.log(player.health);
@@ -35,6 +31,7 @@ Game.prototype = {
           this.time.events.add(2000, () => {
             player.invincible = false;
             console.log(player.invincible);
+            return;
           }, this);
       }
     }, this);
@@ -49,7 +46,7 @@ Game.prototype = {
 
    player.body.collideWorldBounds = true;
    player.body.onWorldBounds = new Phaser.Signal();
- //  player.body.onWorldBounds.add(hitWorldBounds this);
+   //player.body.onWorldBounds.add(hitWorldBounds this);
 
     this.game.camera.follow(player);
   },
@@ -82,7 +79,10 @@ Game.prototype = {
       else {
           player.body.velocity.y = 0;
       }
-  },
+   if (player.health == 0) {
+       console.log("u ded fam");
+   }
+},
 
   onInputDown: function () {
     this.game.state.start('Menu');
