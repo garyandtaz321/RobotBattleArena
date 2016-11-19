@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* CSS Document */
+
+ *
+ {
+  	font: Helvetica Neue, sans-serif;
+ }	
+.div-coolio
+ {
+     margin: 0;
+     width: 350px;
+	 height:250px; 
+	 border:2px solid silver;
+	 border-radius:9px;
+ }
+button
+{
+padding: 0;
+border: none;
+background: none;
+}
