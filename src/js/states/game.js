@@ -19,6 +19,17 @@ Game.prototype = {
 
     this.layer = this.map.createLayer('Tile Layer 1');
     
+    var bullets = this.add.group();
+    var fireRate = 100;
+    var nextFire = 0;
+    
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    bullets.createMultiple(50, 'player');
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
 
@@ -63,7 +74,10 @@ Game.prototype = {
     var sKey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
     var aKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
     var dKey = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
-
+     if (this.input.activePointer.isDown)
+    {
+        fire();
+    }
     if (aKey.isDown) {
           player.body.velocity.x = -200;
       }
@@ -82,6 +96,18 @@ Game.prototype = {
       else {
           player.body.velocity.y = 0;
       }
+  },
+  fire: function () {
+      if (game.time.now > nextFire && bullets.countDead() > 0)
+    {
+        nextFire = game.time.now + fireRate;
+
+        var bullet = bullets.getFirstDead();
+
+        bullet.reset(sprite.x - 8, sprite.y - 8);
+
+        game.physics.arcade.moveToPointer(bullet, 300);
+    }
   },
 
   onInputDown: function () {
