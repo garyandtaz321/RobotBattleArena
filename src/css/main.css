@@ -8,13 +8,10 @@ html, body {
   height: 100%;
   overflow: hidden;
   background: #fff;
+  margin: 0px;
 }
 
-.game {
-  width: 640px;
-  height: 480px;
-  margin: 20px auto;
-}
+
 
 h1,h2,h3 {
     color: #fff;
