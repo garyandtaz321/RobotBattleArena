@@ -21,11 +21,11 @@ Game.prototype = {
     
     this.map.setCollisionBetween(2043, 2104);
     this.map.setTileIndexCallback(3605, () => {
-<<<<<<< HEAD
-    //    crash.play();
+
+        crash.play();
       console.log("Lava! Watch out!");
       return;
-=======
+
       console.log(player.health);
       console.log(player.invincible);
       player.invincible = true;
@@ -37,7 +37,6 @@ Game.prototype = {
             player.invincible = false;
           }, this);
       }
->>>>>>> ef5fdd1f87a0245c2693a087ff8b46cfbdd6f924
     }, this);
 
     player = this.add.sprite(32, 32, 'player');
